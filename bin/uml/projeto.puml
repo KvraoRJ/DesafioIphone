@@ -1,0 +1,45 @@
+@startuml
+title Diagramação de Classes do iPhone
+
+skinparam classAttributeIconSize 0
+interface  ReprodutorMusical {
+  -Musica[] musicas
+  +tocar(): void
+  +pausar(): void
+  +selecionarMusica(): void
+}
+
+class Musica {
+  nome: String
+  artista: String
+  caminho: String
+}
+
+class Contato {
+  nome: String
+  telefone: String
+}
+
+interface AparelhoTelefonico {
+  -Contato[] contatos
+  +ligar(): void
+  +atender(): void
+  +iniciarCorreioVoz(): void
+}
+
+interface NavegadorInternet {
+  -URL: String
+  +exibirPagina(): void
+  +adicionarNovaAba(): void
+  +atualizarPagina(): void
+}
+
+entity "IPhone" as IPhone {}
+
+IPhone --> AparelhoTelefonico
+IPhone --> NavegadorInternet
+IPhone --> ReprodutorMusical
+ReprodutorMusical --o Musica
+AparelhoTelefonico --o Contato
+
+@enduml
